@@ -1,7 +1,5 @@
 #include "EspUsbHostUPSAPC.h"
 
-#define MAX_TIME_BATT = 10;  //10 segundos
-
 class MyEspUsbHostUPSAPC : public EspUsbHostUPSAPC {
 
 private:
@@ -22,8 +20,8 @@ public:
       if ((currentMillis - previousMillis >= interval) && (!shutdown_ups)) {
         // Guarda el "tiempo actual" como el "tiempo anterior", para la próxima comparación
         Serial.println("Ejecutar Shutdown..");
-        testKill();
-        shutdown_ups=true;
+        //testKill();
+        shutdown_ups = true;
       }
     } else
       previousMillis = 0;
@@ -35,7 +33,8 @@ public:
     Serial.println(("Product:" + getProduct()).c_str());
     //delay(10000);
     //shutDownUPS();
-    testAlarm();  //ok
+    //testAlarm();  //ok
+    testKill();
     //testKill(); //ok
     //verboseTestAlarm();
     //testMultipleInterfaces();
